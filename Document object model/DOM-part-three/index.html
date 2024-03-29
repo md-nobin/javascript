@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body style="background-color: #181818; color: #ffff;">
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+</body>
+<script>
+    function addLanguage(langName){
+        let li = document.createElement("li")
+        li.innerHTML = `${langName}`
+        document.querySelector(".language").appendChild(li)
+    }
+    addLanguage("Python")
+    addLanguage("Typescript")
+
+    function addOptLang(langName){
+        document.createElement("li")
+        const li = document.createElement("li")
+        li.appendChild(document.createTextNode(langName))
+        document.querySelector(".language").appendChild(li)
+    }
+    addOptLang("C#")
+
+    // Edit value
+
+    const secoundLang = document.querySelector("li:nth-child(2)")
+    // secoundLang.innerHTML = "C++"
+
+    const newLi = document.createElement("li")
+    newLi.textContent = "GO"
+    secoundLang.replaceWith(newLi)
+
+    const firstLang = document.querySelector("li:last-child")
+    firstLang.outerHTML = '<li>Tipe-Script </li>'
+
+</script>
+</html>
