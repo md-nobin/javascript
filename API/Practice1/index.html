@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+function Image (src, alt){
+    var image = document.createElement("img")
+    image.src = src
+    image.alt = alt
+    image.style.width = "100%"
+    image.style.borderRadius = "5px"
+    image.style.marginBottom = "10px"
+    return image
+}
+
+    
+
+function createParagraph(text) {
+    var paragraph = document.createElement('p');
+    paragraph.textContent = text;
+    return paragraph;
+}
+
+    const url = "https://api.github.com/users/md-nobin"
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", url);
+    xhr.onreadystatechange = function (){
+        console.log(xhr.readyState);
+        if (xhr.readyState === 4){
+            const data = JSON.parse(this.responseText)
+            console.log(typeof data);
+            console.log(data)
+            console.log(data.followers);
+            console.log(data.login)
+
+            userName = createParagraph(String (data.login))
+            document.body.appendChild(userName)
+
+            newsImg = Image(data.avatar_url, "Not found")
+            document.body.appendChild(newsImg)
+
+
+        }
+    }
+
+
+    
+
+    xhr.send();
+
+
+
+
+
+
+
+
+
+</script>
+</html>
